@@ -1,24 +1,25 @@
 <script lang="ts">
-    import Navbar from "$lib/components/navbar.svelte";
-import type { Product } from "$lib/types/Product";
+    import type { Product } from "$lib/types/Product";
     import type { ChangeEventHandler } from "svelte/elements";
     import type { PageProps } from "./$types";
+
     let { data  } : PageProps = $props();
-     const product : Product = data.product; 
+     const product : Product = data.product;
+
+     const user = data.user;
 
      let amount = $state(1);
-
      const changehandlerer : ChangeEventHandler<HTMLInputElement> = (event) =>{
         let value = 1;
         event.target instanceof HTMLInputElement ? value = parseInt(event.target.value) : value = 1;
         amount = value > 0 ? value : 1;
      }
+
+
+
      let rating = $state(0);
      let opinion = $state('');
 </script>
-
-<Navbar/>
-
 
 <div class="container mx-auto border-2 shadow-md p-4 mt-10">
     <div class="grid grid-cols-1 md:grid-cols-2">
@@ -40,7 +41,6 @@ import type { Product } from "$lib/types/Product";
         </div>
     </div>
 </div>
-
 
 <div class="container mx-auto border-2 shadow-md p-4">
     <form class="max-w-2xl bg-white rounded-lg border p-2 mx-auto">

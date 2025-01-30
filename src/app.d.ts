@@ -1,12 +1,13 @@
 import type {Database} from 'sqlite3'
+import type {User} from "$lib/types/User";
 
 declare global {
  namespace App {
   // interface Error {}
 
-  // Uncomment the `interface Locals` and create a `db` property
   interface Locals {
    db: Database;
+   user : User | null;
   }
 
   // interface PageData {}

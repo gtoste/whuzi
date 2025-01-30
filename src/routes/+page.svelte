@@ -1,13 +1,13 @@
 <script lang="ts">
     import type { PageProps } from './$types';
     import Navbar from "$lib/components/navbar.svelte";
+    import NavbarLoggedIn from '\$lib/components/navbarLoggedIn.svelte';
     import ProductModal from "$lib/components/productModal.svelte";
     import Footer from '$lib/components/footer.svelte';
     import type { Product } from '$lib/types/Product';
+    let { data} : PageProps = $props();
 
-    let { data  } : PageProps = $props();
-
-    const products : Product[] = data.products; 
+    const products : Product[] = data.products;
     let filter = $state('')
     let products_to_show : Product[] = $state(data.products);
 
@@ -15,9 +15,11 @@
         console.log(filter)
         products_to_show = products.filter((product) => product.title.includes(filter) )
     }
+
 </script>
 
-<Navbar />
+<div class="min-h-screen">
+
 
 <div class="text-center">
     <input class="shadow appearance-none border rounded  w-300 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-center" id="username" placeholder="Czego szukasz?..."
@@ -38,3 +40,4 @@
 </section>
 
 <Footer />
+</div>
